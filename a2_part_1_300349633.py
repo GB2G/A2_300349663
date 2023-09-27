@@ -47,7 +47,7 @@ def elementary_school_quiz(flag:int, n:int):
     
     elif flag == 1:
         print("*******************************************************************************************************************************")
-        print("For these questions, the exponent symbol will be represented with \'**\', for example:\n4**2 would be 4 to the power of 2")
+        print("For these questions, the exponent symbol will be represented with \'**\'. For example:\n4**2 would be 4 to the power of 2")
         print("*******************************************************************************************************************************\n\n")
         if n == 1:
             answer = input("Ok, here is your question:\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
