@@ -24,10 +24,10 @@ def high_school_welcome():
 
 
 def end_messages(p, total):
-    if (p == 1 and total == 1) or (p == 2, total == 2):
+    if (p == 1 and total == 1) or (p == 2 and total == 2):
         return("\nVery good job "+ name + "! You're sure to get an A tomorrow!")
     
-    elif (p == 0 and total == 1) or (p == 1, total == 2):
+    elif (p == 1 and total == 2):
         return("\nYou did ok " + name + ", but I know you can do better.")
     
     else:
