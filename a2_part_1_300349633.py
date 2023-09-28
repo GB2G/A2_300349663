@@ -1,10 +1,38 @@
 import math
 import random
 
+def program_welcome():
+    print("********************************************************************************")
+    print("*                                                                              *")
+    print("* ______________________Welcome to my quiz generator!_________________________ *")
+    print("*                                                                              *")
+    print("********************************************************************************")
+
 def elementary_welcome():
-    print("###########################################################")
-    print("\n   " + name + ", welcome to my elementary school Quiz")
-    print("\n###########################################################")
+    print("********************************************************************************")
+    print("*                                                                              *")
+    print("* Hi " + name + ", welcome to my quiz generator for elementary school students *")
+    print("*                                                                              *")
+    print("********************************************************************************")
+
+def high_school_welcome():
+    print("********************************************************************************")
+    print("*                                                                              *")
+    print("*    Hi " + name + ", welcome to my quiz generator for high school students    *")
+    print("*                                                                              *")
+    print("********************************************************************************")
+
+
+def end_messages(p, total):
+    if (p == 1 and total == 1) or (p == 2, total == 2):
+        return("\nVery good job "+ name + "! You're sure to get an A tomorrow!")
+    
+    elif (p == 0 and total == 1) or (p == 1, total == 2):
+        return("\nYou did ok " + name + ", but I know you can do better.")
+    
+    else:
+        return("\nYou need a lot more practice " + name +".")
+
 
 
 def elementary_school_quiz(flag:int, n:int):
@@ -24,14 +52,14 @@ def elementary_school_quiz(flag:int, n:int):
     if flag == 0:
 
         if n == 1:
-            answer = input("Ok, here is your question:\nWhat is the result of the following equation: " + str(a) + " - " + str(b) + "?\nYour answer: ")
+            answer = input("\nOk, here is your question:\nWhat is the result of the following equation: " + str(a) + " - " + str(b) + "?\nYour answer: ")
             
             if answer == str(a-b):
                 score += 1
 
         
         elif n == 2:
-            answer = input("Ok, here is your first question:\nWhat is the result of the following equation: " + str(a) + " - " + str(b) + "?\nYour answer: ")
+            answer = input("\nOk, here is your first question:\nWhat is the result of the following equation: " + str(a) + " - " + str(b) + "?\nYour answer: ")
             if answer == str(a-b):
                 score += 1
 
@@ -45,18 +73,19 @@ def elementary_school_quiz(flag:int, n:int):
         else:
             print("You put 0 questions silly! If you want to answer questions now you will have to restart the program.")
     
+   
     elif flag == 1:
-        print("*******************************************************************************************************************************")
-        print("For these questions, the exponent symbol will be represented with \'**\'. For example:\n4**2 would be 4 to the power of 2")
-        print("*******************************************************************************************************************************\n\n")
+        print("********************************************************************************************************************************")
+        print("*   For these questions, the exponent symbol will be represented with \'**\'. For example: 4**2 would be 4 to the power of 2   *")
+        print("********************************************************************************************************************************")
         if n == 1:
-            answer = input("Ok, here is your question:\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
+            answer = input("\nOk, here is your question:\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
             
             if answer == str(a**b):
                 score += 1
         
         elif n == 2:
-            answer = input("Ok, here is your first question:\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
+            answer = input("\nOk, here is your first question:\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
             if answer == str(a**b):
                 score += 1
 
@@ -83,6 +112,7 @@ def high_school_quiz(a,b,c):
 # main
 
 # your code for the welcome tmessage goes here
+program_welcome()
 
 name=input("What is your name? ")
 
@@ -90,30 +120,29 @@ status=input("Hi "+name+". Are you in? Enter \n1 for elementary school\n2 for hi
 
 if status=='1':
     # your code goes here
+    elementary_welcome()
+    quiz_type = int(input("\n"*2 + "Ok " + name + ", what would you like to quiz yourself on today?: \n0) Subtractions\n1) Exponentiations \nYour answer: ").strip().lower())
+
+    if quiz_type == 0 or 'subtractions' or 'subtraction' :
+        
+        quiz_number = int(input("\n\nHow many questions would you like to answer? (1 or 2): ").strip())
+        tot = quiz_number
+        
+        points = elementary_school_quiz(int(quiz_type), quiz_number)
+        print(points)
+        print(end_messages(points, tot))
+        
+        
+
+    elif quiz_type == 1 or 'exponentiations' or 'exponentiations':
+        
+        quiz_number = int(input("How many questions would you like to answer? (1 or 2): ").strip())
+        tot = quiz_number
+
+        points = elementary_school_quiz(int(quiz_type), quiz_number)
+        print(points)
+        print(end_messages(points, tot))
     
-    quiz_type = input("\n"*2 + "Ok " + name + ", what would you like to quiz yourself on today?: \n1) Subtractions\n2) Exponentiations").strip().lower()
-
-    if quiz_type == "1" or "subtractions" or "subtraction":
-        f = 0
-        
-        quiz_number = input("How many questions would you like to answer? (1 or 2):  ")
-
-        while quiz_number < 0:
-            print("\nThat was not a valid number. Please enter a whole number (No decimals)")
-            quiz_number = input("How many questions would you like to answer?: ")
-        
-        elementary_school_quiz(f, quiz_number)
-
-    elif quiz_type == "2" or "exponentiations" or "exponentiation":
-        f = 1
-        
-        quiz_number = input("How many questions would you like to answer?: ")
-
-        while quiz_number < 0:
-            print("\nThat was not a valid number. Please enter a whole number (No decimals)")
-            quiz_number = input("How many questions would you like to answer?: ")
-        
-        elementary_school_quiz(f, quiz_number)
 
 elif status=='2':
 
@@ -134,6 +163,7 @@ elif status=='2':
  
 else:
     # your code goes here
-    pass
+    print("Ah")
+    print(name + ", you are not the target audience for this software...")
 
 print("Good bye "+name+"!")
