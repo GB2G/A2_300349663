@@ -11,17 +11,9 @@ def program_welcome():
 def elementary_welcome():
     print("********************************************************************************")
     print("*                                                                              *")
-    print("* Hi " + name + ", welcome to my quiz generator for elementary school students *")
+    print("*     Hi " + name + ", welcome to my quiz generator for elementary school students    *")
     print("*                                                                              *")
     print("********************************************************************************")
-
-def high_school_welcome():
-    print("********************************************************************************")
-    print("*                                                                              *")
-    print("*    Hi " + name + ", welcome to my quiz generator for high school students    *")
-    print("*                                                                              *")
-    print("********************************************************************************")
-
 
 def end_messages(p, total):
     if (p == 1 and total == 1) or (p == 2 and total == 2):
@@ -32,6 +24,13 @@ def end_messages(p, total):
     
     else:
         return("\nYou need a lot more practice " + name +".")
+
+def high_school_welcome():
+    print("********************************************************************************")
+    print("*                                                                              *")
+    print("*       Hi " + name + ", welcome to my quiz generator for high school students        *")
+    print("*                                                                              *")
+    print("********************************************************************************")
 
 
 
@@ -105,18 +104,31 @@ def elementary_school_quiz(flag:int, n:int):
 def high_school_quiz(a,b,c):
     # Your code for high_school_quiz function goes here (instead of keyword pass)
     # Your code should include  dosctrings and the body of the function
-    pass
+    print("The quadratic equation: 0 =" + str(a) + "x^2 + " + str(b) + "x + " + str(c) + " ")
+    
+    root_inner = ((b)**2 - 4*a*c)/2*a
 
+    if root_inner < 0:
+        root_1 = str(-b) + " + i " + str(math.sqrt(abs((b)**2 - 4*a*c))/2*a)
+        root_2 = str(-b) + " - i " + str(math.sqrt(abs((b)**2 - 4*a*c))/2*a)
 
-
+        print("Has the following complex roots:")
+        print(str(root_1) + " and " + str(root_2))
+    
+    else:
+        root_1 = ((-b) + math.sqrt((b)**2 - 4*a*c))/2*a
+        root_2 = ((-b) - math.sqrt((b)**2 - 4*a*c))/2*a
+        print("Has the following real roots:")
+        print(str(root_1) + " and " + str(root_2))
+    
 # main
 
-# your code for the welcome tmessage goes here
+# your code for the welcome message goes here
 program_welcome()
 
 name=input("What is your name? ")
 
-status=input("Hi "+name+". Are you in? Enter \n1 for elementary school\n2 for high school or\n3 or other character(s) for none of the above?\n")
+status=input("Hi " + name + ". Are you in? Enter \n1 for elementary school\n2 for high school or\n3 or other character(s) for none of the above?\n")
 
 if status=='1':
     # your code goes here
@@ -147,9 +159,11 @@ if status=='1':
 elif status=='2':
 
     # your code for welcome message
+    high_school_welcome()
+
     flag=True
     while flag:
-        question=input(name+", would you like a quadratic equation solved? ")
+        question=input(name+", would you like a quadratic equation solved? ").strip().lower()
 
         # your code to handle varous form of "yes" goes here
 
@@ -157,9 +171,26 @@ elif status=='2':
             flag=False
         else:
             print("Good choice!")
+
+            print("\n*******************************************************************************"
+                "  \n*                                                                             *"
+                "  \n*  As you should already know, the quadratic formula requires 3 coefficents   *"
+                "  \n*  a, b and c to fill the equation:                                           *"
+                "  \n*                             0 = a^2 + bx + c                                *"
+                "  \n*******************************************************************************"
+                  )
+            
+            
+            a = int(input("\nEnter your value for coefficient a: "))
+            b = int(input("\nEnter your value for coefficient b: "))
+            c = int(input("\nEnter your value for coefficient c: "))
             # your code goes here (i.e ask for coefficients a,b and c and call)
             # then make a function call and pass to the fucntion
             # the three coefficients the pupil entered
+
+            print("Your two possible root values are " + str(high_school_quiz(a, b, c)))
+            break
+
  
 else:
     # your code goes here
