@@ -30,5 +30,7 @@ def vote():
     else:
         print("proposal fails")
 
+    #Joe is cool
+
 
 
