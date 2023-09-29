@@ -106,7 +106,7 @@ def high_school_quiz(a,b,c):
     # Your code should include  dosctrings and the body of the function
     print("The quadratic equation: 0 =" + str(a) + "x^2 + " + str(b) + "x + " + str(c) + " ")
     
-    root_inner = ((b)**2 - 4*a*c)/2*a
+    root_inner = ((b)**2 - 4*a*c)
 
     if root_inner < 0:
         root_1 = str(-b) + " + i " + str(math.sqrt(abs((b)**2 - 4*a*c))/2*a)
@@ -181,14 +181,14 @@ elif status=='2':
                   )
             
             
-            a = int(input("\nEnter your value for coefficient a: "))
-            b = int(input("\nEnter your value for coefficient b: "))
-            c = int(input("\nEnter your value for coefficient c: "))
+            a = float(input("\nEnter your value for coefficient a: "))
+            b = float(input("\nEnter your value for coefficient b: "))
+            c = float(input("\nEnter your value for coefficient c: "))
             # your code goes here (i.e ask for coefficients a,b and c and call)
             # then make a function call and pass to the fucntion
             # the three coefficients the pupil entered
 
-            print("Your two possible root values are " + str(high_school_quiz(a, b, c)))
+            print(str(high_school_quiz(a, b, c)))
             break
 
  
