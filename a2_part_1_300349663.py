@@ -2,20 +2,60 @@ import math
 import random
 
 def program_welcome():
-    print("********************************************************************************")
-    print("*                                                                              *")
-    print("* ______________________Welcome to my quiz generator!_________________________ *")
-    print("*                                                                              *")
-    print("********************************************************************************")
+    '''
+        (None) -> (None)
+        \nPrints a formatted welcome message to the screen
+    '''
+    print("********************************************")
+    print("*                                          *")
+    print("*  ___Welcome to my math quiz generator__  *")
+    print("*                                          *")
+    print("********************************************")
+
 
 def elementary_welcome():
-    print("********************************************************************************")
-    print("*                                                                              *")
-    print("*     Hi " + name + ", welcome to my quiz generator for elementary school students    *")
-    print("*                                                                              *")
-    print("********************************************************************************")
+    '''
+        (None) -> (None)
+        \nPrints a welcome message for elementary students if status is elementary and formats it to the length of the entered name
+    '''
+
+    message = "*  __" + name + ", welcome to my quiz-generator for elementary school students.__  *"
+    #Calculates the length of the string including the name given by user
+    x = len(message)
+
+    #Prints the correct amount of stars and spaces to enclose the name in a rectangle
+    print("*" * (x))
+    print("*" + " "* (x-2) + "*")
+    print("*  __" + name + ", welcome to my quiz-generator for elementary school students.__  *")
+    print("*" + " "*(x-2) + "*")
+    print("*" * (x))
+
+
+def high_school_welcome():
+    '''
+        (None) -> (None)
+        \nPrints a welcome message for high school students if status is high school and formats it to the length of the entered name
+    '''
+
+    message = "*   __quadratic equation, a·x^2 + b·x + c= 0, solver for " + name + "__   *"
+    #Calculates the length of the string including the name given by user
+    x = len(message)
+
+    #Prints the correct amount of stars and spaces to enclose the name in a rectangle
+    print("*" * (x))
+    print("*" + " "* (x-2) + "*")
+    print("*   __quadratic equation, a·x^2 + b·x + c= 0, solver for " + name + "__   *")
+    print("*" + " "*(x-2) + "*")
+    print("*" * (x))
+
 
 def end_messages(p, total):
+    '''
+        (int, int) -> str
+        Pre Conditions: p and total must be numbers
+        \nReturns the correct message based on the amount of points recieved
+    '''
+    #Checks if the amount of points recieved are equal to the amount of questions asked, half or none
     if (p == 1 and total == 1) or (p == 2 and total == 2):
         return("\nVery good job "+ name + "! You're sure to get an A tomorrow!")
     
@@ -23,15 +63,7 @@ def end_messages(p, total):
         return("\nYou did ok " + name + ", but I know you can do better.")
     
     else:
-        return("\nYou need a lot more practice " + name +".")
-
-def high_school_welcome():
-    print("********************************************************************************")
-    print("*                                                                              *")
-    print("*       Hi " + name + ", welcome to my quiz generator for high school students        *")
-    print("*                                                                              *")
-    print("********************************************************************************")
-
+        return("\nI think you need some more practice " + name +".")
 
 
 def elementary_school_quiz(flag:int, n:int):
@@ -44,82 +76,128 @@ def elementary_school_quiz(flag:int, n:int):
     # Your code should include  dosctrings and the body of the function
     #
     # Preconditions: flag is 0 or 1, n is 1 or 2
+
+    #Initialize the score
     score = 0
+
+    #Generate random numbers to be used in the first set of questions
     a = random.randint(0, 9)
     b = random.randint(0, 9)
 
+    #If subtractions was chosen...
     if flag == 0:
 
+        #If only 1 question...
         if n == 1:
-            answer = input("\nOk, here is your question:\nWhat is the result of the following equation: " + str(a) + " - " + str(b) + "?\nYour answer: ")
-            
+            answer = input("\nQuestion 1:\nWhat is the result of " + str(a) + " - " + str(b) + "?\nYour answer: ")
+
+            #If the answer is equal to what Python calculated, a point is added to the score
             if answer == str(a-b):
                 score += 1
 
-        
+        #If 2 questions...
         elif n == 2:
-            answer = input("\nOk, here is your first question:\nWhat is the result of the following equation: " + str(a) + " - " + str(b) + "?\nYour answer: ")
+            answer = input("\nQuestion 1:\nWhat is the result of " + str(a) + " - " + str(b) + "?\nYour answer: ")
             if answer == str(a-b):
                 score += 1
-
+            
+            #Refresh the numbers for the second question
             a = random.randint(0, 9)
             b = random.randint(0, 9)
 
-            answer = input("\n\nOk, here is your second question:\nWhat is the result of the following equation: " + str(a) + " - " + str(b) + "?\nYour answer: ")
+            answer = input("\n\nQuestion 2:\nWhat is the result of " + str(a) + " - " + str(b) + "?\nYour answer: ")
             if answer == str(a-b):
                 score += 1
         
+        #User chose 0 questions
         else:
-            print("You put 0 questions silly! If you want to answer questions now you will have to restart the program.")
+            print("Zero questions. OK. Good bye")
     
-   
+   #If exponents was chosen...
     elif flag == 1:
-        print("********************************************************************************************************************************")
-        print("*   For these questions, the exponent symbol will be represented with \'**\'. For example: 4**2 would be 4 to the power of 2   *")
-        print("********************************************************************************************************************************")
+
+        #If only one question
         if n == 1:
-            answer = input("\nOk, here is your question:\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
+            answer = input("\nQuestion 1:\nWhat is the result of " + str(a) + " ^ " + str(b) + "?\nYour answer: ")
             
             if answer == str(a**b):
                 score += 1
         
+        #If two questions
         elif n == 2:
-            answer = input("\nOk, here is your first question:\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
+            answer = input("\nQuestion 1:\nWhat is the result of " + str(a) + " ^ " + str(b) + "?\nYour answer: ")
+            
+            #If the answer given is equal to what Python calculated, a point is added to score
             if answer == str(a**b):
                 score += 1
 
+            #Refresh the numbers for the second question
             a = random.randint(0, 9)
             b = random.randint(0, 9)
 
-            answer = input("\nOk, here is your second question:\n\nWhat is the result of the following equation: " + str(a) + " ** " + str(b) + "?\nYour answer: ")
+            answer = input("\nQuestion 2:\n\nWhat is the result of " + str(a) + " ^ " + str(b) + "?\nYour answer: ")
             if answer == str(a**b):
                 score += 1
 
         else:
-            print("You put 0 questions silly! If you want to answer questions now you will have to restart the program.")
+            print("Zero questions. OK. Good bye")
 
+    #Return the score value to main to be used in the final part
     return score
 
 
 def high_school_quiz(a,b,c):
-    # Your code for high_school_quiz function goes here (instead of keyword pass)
-    # Your code should include  dosctrings and the body of the function
-    print("The quadratic equation: 0 =" + str(a) + "x^2 + " + str(b) + "x + " + str(c) + " ")
+    '''
+        (number, number, number) -> None
+        Pre Condition: a, b and c must be numbers
+        Takes 3 given numbers a, b and c and solves the quadratic equation for 0 = ax^2 + bx + c
+    '''
     
-    root_inner = ((b)**2 - 4*a*c)
+    #If the equation is linear, solve by isolating x
+    if int(a) == 0:
 
-    if root_inner < 0:
-        root_1 = str(-b) + " + i " + str(math.sqrt(abs((b)**2 - 4*a*c))/2*a)
-        root_2 = str(-b) + " - i " + str(math.sqrt(abs((b)**2 - 4*a*c))/2*a)
+        if a ==0 and b != 0 and c != 0:
+            print("The linear equation: " + str(b) + "·x + " + str(c) + " = 0")
+            print("Has the following root/solution: " + str((0-(c))/b))
 
-        print("Has the following complex roots:")
-        print(str(root_1) + " and " + str(root_2))
-    
+        #Because 0 = 0, it is satisfied for all numbers x
+        elif (a == b == c == 0):
+            print("Is satisfied for all numbers x")
+        
+        elif a == 0 and b == 0 and c != 0:
+            print("Is satisfied for no numbers x")
+
+    #If the equation is polynomial/quadratic, solve with the quadratic equation
     else:
-        root_1 = ((-b) + math.sqrt((b)**2 - 4*a*c))/2*a
-        root_2 = ((-b) - math.sqrt((b)**2 - 4*a*c))/2*a
-        print("Has the following real roots:")
-        print(str(root_1) + " and " + str(root_2))
+        print("The quadratic equation: " + str(a) + "x^2 + " + str(b) + "·x + " + str(c) + " = 0 ")
+        root_inner = ((b)**2 - 4*a*c)
+
+        #Check if the square root is an imaginary number
+        if root_inner < 0:
+            #If yes, print i +/- (|sqrt|/2a)
+            root_1 = str((-b)/(2*a)) + " + i " + str(math.sqrt(abs((b)**2 - 4*a*c))/(2*a))
+            root_2 = str((-b)/(2*a))  + " - i " + str(math.sqrt(abs((b)**2 - 4*a*c))/(2*a))
+
+            print("Has the following complex roots:")
+            print(str(root_1) + " and " + str(root_2))
+        
+        #If it is not an imaginary number...
+        else:
+            root_1 = ((-b) + math.sqrt((b)**2 - 4*a*c))/(2*a)
+            root_2 = ((-b) - math.sqrt((b)**2 - 4*a*c))/(2*a)
+
+            #If + and - give the same root, there is only one possible solution
+            if root_1 == root_2:
+                print("Has only one solution, a real root: ")
+                print(str(root_1))
+
+            #If numerator is = 0, then 0 = 0
+            elif b == c == 0:
+                print("Is satisfied for all numbers x")
+
+            else:
+                print("Has the following real roots:")
+                print(str(root_1) + " and " + str(root_2))
     
 # main
 
@@ -133,36 +211,50 @@ status=input("Hi " + name + ". Are you in? Enter \n1 for elementary school\n2 fo
 if status=='1':
     # your code goes here
     elementary_welcome()
-    quiz_type = int(input("\n"*2 + "Ok " + name + ", what would you like to quiz yourself on today?: \n0) Subtractions\n1) Exponentiations \nYour answer: ").strip().lower())
+    quiz_type = int(input("\n"*2 + "Ok " + name + ", what would you like to practice? Enter \n0 for Subtraction\n1 for Exponentiation \nYour answer: ").strip().lower())
 
     if quiz_type == 0 or 'subtractions' or 'subtraction' :
         
-        quiz_number = int(input("\n\nHow many questions would you like to answer? (1 or 2): ").strip())
-        tot = quiz_number
+        quiz_number = int(input("\n\nHow many practice questions would you like to do? (0, 1 or 2): ").strip())
+        if (0 <= quiz_number <= 2):
+            points = elementary_school_quiz(int(quiz_type), quiz_number)
+            tot = quiz_number
+
+            if quiz_number == 1 or quiz_number == 2:
+                print(points)
+                print(end_messages(points, tot))
         
-        points = elementary_school_quiz(int(quiz_type), quiz_number)
-        print(points)
-        print(end_messages(points, tot))
-        
+        else:
+            print("Only 0, 1 and 2 are valid choices for the number of questions.")
         
 
     elif quiz_type == 1 or 'exponentiations' or 'exponentiations':
         
-        quiz_number = int(input("How many questions would you like to answer? (1 or 2): ").strip())
-        tot = quiz_number
+        quiz_number = int(input("\n\nHow many practice questions would you like to do? (0, 1 or 2): ").strip())
+        if (0 <= quiz_number <= 2):
+            points = elementary_school_quiz(int(quiz_type), quiz_number)
+            tot = quiz_number
 
-        points = elementary_school_quiz(int(quiz_type), quiz_number)
-        print(points)
-        print(end_messages(points, tot))
+            if quiz_number == 1 or quiz_number == 2:
+                print(points)
+                print(end_messages(points, tot))
+        
+        else:
+            print("Only 0, 1 and 2 are valid choices for the number of questions.")
+
+    else:
+        print("Invalid choice, only 0 or 1 is accepted")
     
 
 elif status=='2':
 
-    # your code for welcome message
+    # Call function containing welcome message
     high_school_welcome()
 
     flag=True
     while flag:
+
+        #Handle various inputs of s by using string methods strip() to remove spaces and lower() to make all letters lowercase
         question=input(name+", would you like a quadratic equation solved? ").strip().lower()
 
         # your code to handle varous form of "yes" goes here
@@ -171,30 +263,17 @@ elif status=='2':
             flag=False
         else:
             print("Good choice!")
-
-            print("\n*******************************************************************************"
-                "  \n*                                                                             *"
-                "  \n*  As you should already know, the quadratic formula requires 3 coefficents   *"
-                "  \n*  a, b and c to fill the equation:                                           *"
-                "  \n*                             0 = a^2 + bx + c                                *"
-                "  \n*******************************************************************************"
-                  )
             
-            
-            a = float(input("\nEnter your value for coefficient a: "))
-            b = float(input("\nEnter your value for coefficient b: "))
-            c = float(input("\nEnter your value for coefficient c: "))
-            # your code goes here (i.e ask for coefficients a,b and c and call)
-            # then make a function call and pass to the fucntion
-            # the three coefficients the pupil entered
+            a = float(input("\nEnter a number for the coefficient a: "))
+            b = float(input("\nEnter a number for the coefficient b: "))
+            c = float(input("\nEnter a number for the coefficient c: "))
 
-            print(str(high_school_quiz(a, b, c)))
-            break
+            high_school_quiz(a, b, c)
+        
 
  
 else:
     # your code goes here
-    print("Ah")
     print(name + ", you are not the target audience for this software...")
 
 print("Good bye "+name+"!")
