@@ -87,7 +87,7 @@ Hi Kevin El-Saikali. Are you in? Enter
 ****************************************************************************************
 
 
-Ok Kevin El-Saikali, what would you like to practice? Enter 
+Kevin El-Saikali, what would you like to practice? Enter 
 0 for Subtraction
 1 for Exponentiation 
 Your choice: 0

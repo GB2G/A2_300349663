@@ -35,10 +35,10 @@ def vote():
     if x == 1.0:
         print("proposal passes unanimously")
 
-    elif round(x, 3) == 0.67:
+    elif (2/3) <= x < 1.0:
         print("proposal passes with super majority") 
 
-    elif x == 0.5:
+    elif (1/2) <= x <(2/3):
         print("proposal passes with simple majority")
     
     else:

@@ -209,7 +209,7 @@ status=input("Hi " + name + ". Are you in? Enter \n1 for elementary school\n2 fo
 if status=='1':
     # Welcome message for elementary students
     elementary_welcome()
-    quiz_type = int(input("\n"*2 + "Ok " + name + ", what would you like to practice? Enter \n0 for Subtraction\n1 for Exponentiation \nYour choice: ").strip().lower())
+    quiz_type = int(input("\n"*2 + name + ", what would you like to practice? Enter \n0 for Subtraction\n1 for Exponentiation \nYour choice: ").strip().lower())
 
     #Check if subtractions was selected as an option
     if quiz_type == 0:
