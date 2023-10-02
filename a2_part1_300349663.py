@@ -1,3 +1,10 @@
+# Family name: Kevin El-Saikali
+# Student number: 300349663
+# Course ITI 1120
+# Assignment Number 2, Part 1
+# Year 2023
+
+
 import math
 import random
 
@@ -70,7 +77,7 @@ def elementary_school_quiz(flag:int, n:int):
     '''
         (int, int) -> int
         \nPre Conditions: 'flag' must have a value of 0 or 1 and 'n' must have a value of 1 or 2
-        \nGiven the type of problems 'flag', the function will ask to solve 'n' problems with either subtraction or exponentiation
+        \nGiven the type of problem 'flag', the function will ask to solve 'n' problems with either subtraction or exponentiation. It then returns the score of the user after all questions are answered
     '''
 
     #Initialize the score
@@ -154,7 +161,7 @@ def high_school_quiz(a,b,c):
 
         if a ==0 and b != 0 and c != 0:
             print("The linear equation: " + str(b) + "·x + " + str(c) + " = 0")
-            print("Has the following root/solution: " + str((0-(c))/b))
+            print("Has the following root/solution: " + str((-c)/b))
 
         #Because 0 = 0, it is satisfied for all numbers x
         elif (a == b == c == 0):
@@ -283,7 +290,7 @@ elif status=='2':
             high_school_quiz(a, b, c)
         
 
- 
+#If the user is too old or too young to be using this program...
 else:
     # your code goes here
     #Simply print that this program is not made for them if not in elementary or high school

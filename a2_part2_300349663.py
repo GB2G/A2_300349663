@@ -1,7 +1,14 @@
+# Family name: Kevin El-Saikali
+# Student number: 300349663
+# Course ITI 1120
+# Assignment Number 2, Part 2
+# Year 2023
+
+
 def min_enclosing_rectangle(radius, x, y):
     '''
-        (number, number, number) -> number, nummber
-        \nPre Condition: radius x and y must be numbers
+        (number, number, number) -> (number, number)
+        \nPre Condition: radius, x and y must be numbers
         \nTakes 3 parameters, radius: the radius of a circle, x and y: the coordinates representing the center of the circle and returns the coordinates of the bottom left corner of the rectangle
     '''
     if radius < 0:
@@ -13,7 +20,7 @@ def min_enclosing_rectangle(radius, x, y):
 def vote_percentage(results:str):
     '''
         (str) -> number
-        \nPre Condition: results must be a string
+        \nPre Condition: results must be a string containing all the cases of 'yes' 'no' and 'abstained'
         \nTakes a string 'results' containing votes "yes" "no" and "abstained" and parses through to return the percentage of votes equal to yes
     '''
 
@@ -26,6 +33,7 @@ def vote_percentage(results:str):
 def vote():
     '''
         (None) -> None
+        \nPre Condition: votes must be a string containing all the cases of 'yes' 'no' and 'abstained'
         \nPasses a string of votes inputted by the user through the vote_percentage() function. It then returns the percentage of "yes"'s to determine the outcome of the vote
     '''
     votes = input("Enter the yes, no and abstained votes and then press [Enter]: ")
