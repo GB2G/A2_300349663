@@ -56,7 +56,7 @@ def high_school_welcome():
     print("*" * (x))
 
 
-def end_messages(p, total):
+def end_messages(p, total): 
     '''
         (int, int) -> str
         Pre Conditions: p and total must be numbers
