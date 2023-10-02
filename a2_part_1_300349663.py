@@ -27,7 +27,7 @@ def elementary_welcome():
     print("*" * (x))
     print("*" + " "* (x-2) + "*")
     print("*  __" + name + ", welcome to my quiz-generator for elementary school students.__  *")
-    print("*" + " "*(x-2) + "*")
+    print("*" + " "* (x-2) + "*")
     print("*" * (x))
 
 
@@ -72,10 +72,6 @@ def elementary_school_quiz(flag:int, n:int):
         \nPre Conditions: 'flag' must have a value of 0 or 1 and 'n' must have a value of 1 or 2
         \nGiven the type of problems 'flag', the function will ask to solve 'n' problems with either subtraction or exponentiation
     '''
-    # Your code for elementary_school_quiz function goes here (instead of keyword pass)
-    # Your code should include  dosctrings and the body of the function
-    #
-    # Preconditions: flag is 0 or 1, n is 1 or 2
 
     #Initialize the score
     score = 0
@@ -149,7 +145,7 @@ def elementary_school_quiz(flag:int, n:int):
 def high_school_quiz(a,b,c):
     '''
         (number, number, number) -> None
-        Pre Condition: a, b and c must be numbers
+        Pre Condition: a, b and c must be real numbers
         Takes 3 given numbers a, b and c and solves the quadratic equation for 0 = ax^2 + bx + c. It then prints out the possible roots to satisfy x, or tells the user there are none if impossible
     '''
     
@@ -217,7 +213,7 @@ if status=='1':
 
     #Check if subtractions was selected as an option
     if quiz_type == 0:
-        
+         
         #Get the amount of questions to ask: either 0, 1 or 2
         quiz_number = int(input("\n\nHow many practice questions would you like to do? (0, 1 or 2): ").strip())
         if (0 <= quiz_number <= 2):
