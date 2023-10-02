@@ -150,7 +150,7 @@ def high_school_quiz(a,b,c):
     '''
         (number, number, number) -> None
         Pre Condition: a, b and c must be numbers
-        Takes 3 given numbers a, b and c and solves the quadratic equation for 0 = ax^2 + bx + c
+        Takes 3 given numbers a, b and c and solves the quadratic equation for 0 = ax^2 + bx + c. It then prints out the possible roots to satisfy x, or tells the user there are none if impossible
     '''
     
     #If the equation is linear, solve by isolating x
@@ -195,25 +195,52 @@ def high_school_quiz(a,b,c):
             elif b == c == 0:
                 print("Is satisfied for all numbers x")
 
+            #If there are no special cases
             else:
                 print("Has the following real roots:")
                 print(str(root_1) + " and " + str(root_2))
     
 # main
 
-# your code for the welcome message goes here
+# Calls welcome message function
 program_welcome()
 
 name=input("What is your name? ")
 
 status=input("Hi " + name + ". Are you in? Enter \n1 for elementary school\n2 for high school or\n3 or other character(s) for none of the above?\n")
 
+# If elementary selected
 if status=='1':
-    # your code goes here
+    # Welcome message for elementary students
     elementary_welcome()
-    quiz_type = int(input("\n"*2 + "Ok " + name + ", what would you like to practice? Enter \n0 for Subtraction\n1 for Exponentiation \nYour answer: ").strip().lower())
+    quiz_type = int(input("\n"*2 + "Ok " + name + ", what would you like to practice? Enter \n0 for Subtraction\n1 for Exponentiation \nYour choice: ").strip().lower())
 
-    if quiz_type == 0 or 'subtractions' or 'subtraction' :
+    #Check if subtractions was selected as an option
+    if quiz_type == 0:
+        
+        #Get the amount of questions to ask: either 0, 1 or 2
+        quiz_number = int(input("\n\nHow many practice questions would you like to do? (0, 1 or 2): ").strip())
+        if (0 <= quiz_number <= 2):
+
+            #Use the users inputted values to get the desired type and amount of questions from the function
+            points = elementary_school_quiz(int(quiz_type), quiz_number) #calls the quiz function
+            
+            #Sets the total possible amount of points to the number of questions being asked
+            tot = quiz_number
+
+            #Only if a question was actually asked tally the points
+            if quiz_number == 1 or quiz_number == 2:
+                #Call the end messages function to return the appropriate message
+                print(end_messages(points, tot))
+        
+        #If the user didn't input 0 or 1
+        else:
+            print("Only 0, 1 and 2 are valid choices for the number of questions.")
+    
+        
+    #Check if exponentiation was chosen if not subtraction
+    #Same concept as if quiz_type == 0
+    elif quiz_type == 1:
         
         quiz_number = int(input("\n\nHow many practice questions would you like to do? (0, 1 or 2): ").strip())
         if (0 <= quiz_number <= 2):
@@ -226,26 +253,13 @@ if status=='1':
         
         else:
             print("Only 0, 1 and 2 are valid choices for the number of questions.")
-        
 
-    elif quiz_type == 1 or 'exponentiations' or 'exponentiations':
-        
-        quiz_number = int(input("\n\nHow many practice questions would you like to do? (0, 1 or 2): ").strip())
-        if (0 <= quiz_number <= 2):
-            points = elementary_school_quiz(int(quiz_type), quiz_number)
-            tot = quiz_number
-
-            if quiz_number == 1 or quiz_number == 2:
-                print(points)
-                print(end_messages(points, tot))
-        
-        else:
-            print("Only 0, 1 and 2 are valid choices for the number of questions.")
-
+    #If the user didn't input 0 or 1
     else:
         print("Invalid choice, only 0 or 1 is accepted")
     
 
+#Check if the user selected that they are in high school if not elementary
 elif status=='2':
 
     # Call function containing welcome message
@@ -254,26 +268,32 @@ elif status=='2':
     flag=True
     while flag:
 
-        #Handle various inputs of s by using string methods strip() to remove spaces and lower() to make all letters lowercase
+        #Handle various inputs of 'yes' by using string methods strip() to remove spaces and lower() to make all letters lowercase
         question=input(name+", would you like a quadratic equation solved? ").strip().lower()
 
-        # your code to handle varous form of "yes" goes here
+        # your code to handle various form of "yes" goes here
 
         if question!="yes":
             flag=False
         else:
             print("Good choice!")
             
+            #Get the values needed to fill the equation ax^2 + bx + c
             a = float(input("\nEnter a number for the coefficient a: "))
             b = float(input("\nEnter a number for the coefficient b: "))
             c = float(input("\nEnter a number for the coefficient c: "))
 
+            #Call the function to treat the data given
             high_school_quiz(a, b, c)
         
 
  
 else:
     # your code goes here
+    #Simply print that this program is not made for them if not in elementary or high school
     print(name + ", you are not the target audience for this software...")
 
+#Say goodbye ot the user
 print("Good bye "+name+"!")
+
+#End program
